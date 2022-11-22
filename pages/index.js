@@ -1,5 +1,5 @@
 import React from "react";
-import Main from "./../components/Main";
+import Main from "../components/Main";
 import { client } from "../lib/client";
 function index({ products, banners }) {
   return (
