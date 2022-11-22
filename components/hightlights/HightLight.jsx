@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 import { urlFor } from "../../lib/client";
 import Link from "next/link";
@@ -6,16 +6,26 @@ import Image from'next/image'
 import {Spacer, Text} from '@nextui-org/react'
 //slick slide
 // animation
-import { motion,AnimatePresence,Variant } from "framer-motion";
+import { motion } from "framer-motion";
 import BtnImg from '../../public/btn.png'
 import Countdown from "./Countdown";
+import CountdownMb from "./CountdownMb";
  function HightLight({ b,index,i}) {
-  console.log(i);
-  console.log('hi',index);
+
 
 
   return (
    <>
+   <div  className={index===i?"b_mb b_mbActive":"b_mb"}>
+    <h2 className="b_mb_name">{b?.midText}</h2>
+    <div className="b_mb_timer"><CountdownMb b={b}/></div>
+    <div className="b_mb_img"><img src={urlFor(b?.image)} alt="" />
+   </div>
+   <h4 className="b_mb_desc">{b?.desc}</h4>
+   <div className="b_mb_price grid"><Text h2  
+   css={{color:'	#a41a1a',font:'30px Days one',background:'white'}}>{b?.price}$</Text>
+</div>
+   </div>
    <div className={index===i?"b_circle":"b_circle  circleAnimate"}></div>
      <motion.div  className={index===i ? 'banner slide' :'banner '} style={{}}>
     

@@ -4,7 +4,7 @@ import {urlFor} from '../lib/client'
 import Link from 'next/link';
 
 function Product({
-  p:{image,name,slug,price,details,cathegory}
+  p:{image,name,slug,price,cathegory}
 }) {
   return (
     

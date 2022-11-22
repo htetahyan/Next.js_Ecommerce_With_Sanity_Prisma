@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Link from 'next/link'
 import { Button} from '@nextui-org/react';
 import {client,urlFor} from '../../lib/client'
@@ -7,7 +7,6 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 
 //handle review
 import Rating from '@mui/material/Rating';
-import Typography from '@mui/material/Typography';
 function ProductPage({ product, products }) {
   const { image, name, details, price } = product;
   //review

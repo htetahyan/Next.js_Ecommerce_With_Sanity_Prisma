@@ -2,10 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 @import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Days+One&family=Fira+Sans:wght@300&display=swap");
+@mixin color {
+  color: #0a1929;
+}
 @mixin textStroke {
   color: transparent;
   -webkit-text-stroke: 1.5px #0a1929;
   text-stroke: 1.5px #0a1929;
+}
+@mixin transform{
+  transition:  transform 0.3s ease-in-out;
+  &:hover{
+    transform: scale(1.1);
+  }
 }
 * {
   color: #202636;
@@ -45,10 +54,6 @@ a {
   }
 }
  */
-//main section
-.main{
-  
-}
 
 .header {
   z-index: 99;
@@ -182,7 +187,7 @@ height: 8vh;
     gap: 40%;
     h2 {
       font-size: 1.2rem;
-      padding: 5px;
+      padding:0px;
       color: #f0f0f0;
     }
     .lists {
@@ -213,14 +218,14 @@ height: 35px;
     }
     .menusLink {
       display: block;
-      width: 90%;
-      border-radius: 3vh 0.3vh;
-      height: 30%;
+      width: 90vw;
+      box-shadow: 90px 0 10px 0px rgba(0, 0, 0, 0.299);
+      
+      height: 90vh;
       background-color: #1e243b;
       left: 0;
-      right: 0;
-      top: 0;
-      bottom: 56%;
+    
+      top: 7.5vh;
       overflow: hidden;
       z-index: 2;
       margin: auto;
@@ -428,9 +433,208 @@ h2{
     }
   }
 }
+.b_mb{
+  display: none;
+}
+.mb_btn{
+  display: none;
+}
 //responsive For hightLight And Banner Section
 @media (orientation:portrait) {
+ .hightlight{
+  height: 90vh;
+  width: 101vw;
+  grid-template-rows: 10%90%;
+ }
+   .hl_headerImg{
+    height: 10vh;
+    width: 70vw;
+ justify-self: center;
+   }.hl_header{
+    background-size: contain;
+   }
+   .slide{display: none;}
+   .banners{
+    top:7%;
+  
+   }
+   .hl_previous,.hl_next{
+    top: 80vh;
+   }
+  .b_mb{
+    display: none;
+  }
+  .b_mbActive{
+    display: grid;
+    z-index: 3;
     
+    background-color: #b6b7b889;
+    position: absolute;
+    width: 90vw;
+    top: 5%;
+    border-radius: 10px;
+   
+    height: 55vh;
+grid-template-columns: repeat(5, 1fr);
+grid-template-rows: 1fr 3fr repeat(3, 1fr);
+grid-column-gap: 5px;
+grid-row-gap: 0px;
+    .b_mb_name{
+      
+      grid-area: 1 / 1 / 2 / 4;
+      color: #0a1929;
+      font-size: 25px;
+      font-family: 'Days one';
+   align-self: center;
+   padding: 0 10px;
+    }
+    .b_mb_timer{ grid-area: 1 / 4 / 2 / 6; 
+   align-self: center;
+    justify-self: center;
+    }
+    .b_mb_img{
+      grid-area: 2 / 1 / 4 / 6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      img{
+        max-height: 100%;
+
+      }
+    }
+    .b_mb_desc{
+      grid-area: 4 / 1 / 6 / 4;
+      color: #0a1929;
+      font: 12px 'Days one';
+      padding: 5px;
+    }
+  }
+  .b_mb_price{ grid-area: 4 / 4 / 6 / 6; 
+    padding: 4p;
+ h2{
+  align-self: flex-end;
+  text-align: center;
+ }
+
+  }.circleAnimate{
+ width: 35px;
+ height: 35px;
+ left: 40vw;
+top: 25vh;
+ 
+   
+  }
+.mb_btn{
+  position: absolute;
+  display: block;
+  top: 80vh;
+
+margin: 0 32.5vw;
+}
+
+/* CSS */
+.button-82-pushable {
+  position: relative;
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  outline-offset: 4px;
+  transition: filter 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-82-shadow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background: hsl(0deg 0% 0% / 0.25);
+  will-change: transform;
+  transform: translateY(2px);
+  transition:
+    transform
+    600ms
+    cubic-bezier(.3, .7, .4, 1);
+}
+
+.button-82-edge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background: linear-gradient(
+    to left,
+    rgb(37, 15, 108) 0%,
+    rgb(21, 23, 115) 8%,
+    rgb(19, 21, 86) 92%,
+    rgb(27, 14, 53) 100%
+  );
+}
+
+.button-82-front {
+  display: block;
+  position: relative;
+  padding: 12px 27px;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  color: white;
+  background: rgb(26, 32, 142);
+  will-change: transform;
+  transform: translateY(-4px);
+  transition:
+    transform
+    600ms
+    cubic-bezier(.3, .7, .4, 1);
+}
+
+@media (min-width: 768px) {
+  .button-82-front {
+    font-size: 1.25rem;
+    padding: 12px 42px;
+  }
+}
+
+.button-82-pushable:hover {
+  filter: brightness(110%);
+  -webkit-filter: brightness(110%);
+}
+
+.button-82-pushable:hover .button-82-front {
+  transform: translateY(-6px);
+  transition:
+    transform
+    250ms
+    cubic-bezier(.3, .7, .4, 1.5);
+}
+
+.button-82-pushable:active .button-82-front {
+  transform: translateY(-2px);
+  transition: transform 34ms;
+}
+
+.button-82-pushable:hover .button-82-shadow {
+  transform: translateY(4px);
+  transition:
+    transform
+    250ms
+    cubic-bezier(.3, .7, .4, 1.5);
+}
+
+.button-82-pushable:active .button-82-shadow {
+  transform: translateY(1px);
+  transition: transform 34ms;
+}
+
+.button-82-pushable:focus:not(:focus-visible) {
+  outline: none;
+}
 }
 //@Products
 .pd {
