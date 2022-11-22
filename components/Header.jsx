@@ -31,7 +31,7 @@ function Header() {
        <Spacer y={3}/>
      <h1>|</h1>
      <Spacer y={3}/>
-  <button class="button-86" role="button">Sign In</button>
+  <button className="button-86" role="button">Sign In</button>
   </div>
   <div className="h_right flex">
   <div className="h_cartMb"></div>

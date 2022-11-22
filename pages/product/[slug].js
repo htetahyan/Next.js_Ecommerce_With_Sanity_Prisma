@@ -1,4 +1,6 @@
+import React from "react";
 import { useState } from "react";
+
 import Link from 'next/link'
 import { Button} from '@nextui-org/react';
 import {client,urlFor} from '../../lib/client'

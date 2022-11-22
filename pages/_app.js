@@ -1,15 +1,16 @@
+import React from 'react';
 import '../styles/globals.css'
 import { NextUIProvider } from '@nextui-org/react';
-import {SessionProvider } from 'next-auth/react'
+
 import Header from '../components/Header';
-function MyApp({ Component, pageProps: { session, ...pageProps}}) {
+function MyApp({ Component, pageProps}) {
   return (
-  <SessionProvider session={session}>
+  
   <NextUIProvider>
     <Header/>
     <Component {...pageProps} />
   </NextUIProvider>
-  </SessionProvider>)
+  )
 }
 
 export default MyApp
