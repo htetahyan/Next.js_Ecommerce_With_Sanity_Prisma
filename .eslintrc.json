@@ -2,7 +2,7 @@
   "extends": ["next", "next/core-web-vitals","plugin:react/jsx-runtime"],
 
     "rules": {
-         "react/prop-types": "off",
-"react/no-unknown-property": ["error", { "ignore": ["allowtransparency","frameborder"] }]
+         "react/prop-types": "off"
+
     }
 }
