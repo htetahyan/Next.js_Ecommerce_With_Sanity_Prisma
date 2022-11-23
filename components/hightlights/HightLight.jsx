@@ -37,7 +37,8 @@ function HightLight({ b,index,i}) {
  <h2>Buy Now!</h2>
  <Spacer x={0.4}/>
 
-      <div className="b_btnImg"></div>
+      {/* <div className="b_btnImg"></div> */}
+      <>hi</>
 </div>
 </div>
     </motion.div>
