@@ -16,7 +16,7 @@ body {
       -ms-user-select: none;
           user-select: none;
   color: #202636;
-  background: url(../public/Desktop\ -\ 1.png);
+  background: url(/bg.png);
   font-weight: bold;
   margin: 0;
   /* font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
@@ -139,7 +139,7 @@ a {
   align-items: center;
 }
 .header .info .cartIcon {
-  background: url(../public/cartIcon.png);
+  background: url(/cartIcon.png);
   background-size: cover;
   height: 45px;
   width: 45px;
@@ -188,7 +188,7 @@ a {
   .header .h_right .h_cartMb {
     width: 35px;
     height: 35px;
-    background: url(../public/cartMb.png);
+    background: url(/cartMb.png);
     background-repeat: no-repeat;
     background-size: contain;
   }
@@ -258,7 +258,7 @@ a {
 
 .hl_header {
   justify-self: center;
-  background: url(../public/text.svg);
+  background: url(/text.svg);
   background-repeat: no-repeat;
   max-width: 100vh;
   grid-row: 1;
@@ -271,7 +271,7 @@ a {
   top: 20%;
   left: 1.5%;
   cursor: pointer;
-  background: url(../public/prev.png);
+  background: url(/prev.png);
   width: 50px;
   height: 50px;
   background-size: cover;
@@ -287,7 +287,7 @@ a {
   top: 20%;
   right: 1.5%;
   cursor: pointer;
-  background: url(../public/next.png);
+  background: url(/next.png);
   width: 50px;
   height: 50px;
   background-size: cover;
@@ -398,10 +398,12 @@ a {
 .b_btn .b_btnImg {
   width: 80px;
   height: 80px;
+  background: url(/btn.png);
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  background-size: cover;
   transition: transform 0.3s ease-in;
 }
 .b_btn .b_btnImg:hover {
@@ -638,7 +640,7 @@ a {
 }
 
 .pdPage {
-  background: url(../public/snowman.png);
+  background: url(/snowman.png);
   background-size: cover;
   background-position: center;
   min-height: 100vh;
@@ -669,7 +671,7 @@ a {
   backdrop-filter: blur(5.3px);
   -webkit-backdrop-filter: blur(5.3px);
   border: 1px solid rgba(185, 185, 185, 0.1);
-  background-image: url(../public/christmas.png);
+  background-image: url(/christmas.png);
   background-position: center;
   background-size: 150%;
   background-repeat: no-repeat;

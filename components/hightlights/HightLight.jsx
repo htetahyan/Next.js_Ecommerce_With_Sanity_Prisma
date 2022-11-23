@@ -4,7 +4,7 @@ import {Spacer, Text} from '@nextui-org/react'
 //slick slide
 // animation
 import { motion } from "framer-motion";
-import BtnImg from '../../public/btn.png'
+
 import Countdown from "./Countdown";
 import CountdownMb from "./CountdownMb";
 function HightLight({ b,index,i}) {
@@ -36,8 +36,8 @@ function HightLight({ b,index,i}) {
 
  <h2>Buy Now!</h2>
  <Spacer x={0.4}/>
- <Image    className="b_btnImg"
-      src={BtnImg} alt="" />
+
+      <div className="b_btnImg"></div>
 </div>
 </div>
     </motion.div>
