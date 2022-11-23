@@ -1,4 +1,9 @@
 {
-  "extends": ["next", "next/core-web-vitals","plugin:react/jsx-runtime"]
+  "extends": ["next", "next/core-web-vitals","plugin:react/jsx-runtime"],
+
+    "rules": {
+         "react/prop-types": "off",
+"react/no-unknown-property": ["error", { "ignore": ["jsx"] }]
+    }
   
 }
