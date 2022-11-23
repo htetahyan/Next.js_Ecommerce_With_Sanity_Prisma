@@ -1,9 +1,11 @@
 import React from 'react'
-
+import parse from 'html-react-parser';
 function Countdown({b}) {
+
   return (
     <div className='m-6 justify-self-center'>
-   <iframe src={b?.embeded} allowtransparency="true" frameborder="0" width="244" height="82"></iframe>
+      {parse(b?.embeded)}
+
 
     </div>
   )
