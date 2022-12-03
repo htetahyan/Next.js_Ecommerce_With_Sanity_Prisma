@@ -1,67 +1,77 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 
 import Link from 'next/link'
-import { Button} from '@nextui-org/react';
+
+import { Button, Text} from '@nextui-org/react';
 import {client,urlFor} from '../../lib/client'
+import{ Image }from "@nextui-org/react";
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { useStateManager } from "../../state manager/Context";
 //handle review
 import Rating from '@mui/material/Rating';
-function ProductPage({ product, products }) {
-  const { image, name, details, price } = product;
-  //review
-  const [value, setValue] = useState(0);
-console.log(product,products);
-  return (
-    <div className="pdPage">
-        <div className="back">
-          <Link href='/'>
-       
-            <Button auto icon={<KeyboardBackspaceIcon  fill="currentColor" />} color="gradient">
-        Back to Home Page
-      </Button>
-            </Link>
-        </div>
-      <div className="container p">
 
-        <div className="p_intro grid align-center justify-center">
-          <div className="p_headers grid "><h1 className="text-center">{name}</h1>
-       <div className="p_review flex align-center ">
-       <Rating
-       className="p_star"
-         name="simple-controlled"
-         value={value}
-         onChange={(event, newValue) => {
-           setValue(newValue);
-         }}
-       />
-       <h5 className="px-3 ">3.8</h5>
-       </div>
-      </div>
-          
-        <img src={urlFor(image && image[0])} alt=""  className="p_img"/>
-       <Button icon={<FavoriteIcon fill="currentColor" />  } shadow color="gradient" auto>
-          Add to Favourite
-        </Button>
-        </div>
-       
-        <div className="p_detailsBx">
-     <h2 className="text-cyan-300">Product Detail</h2>
-     <div className="p_detail">
-      <p>{details}</p>
-     </div>
-     <div className="p_buy  align-center justify-around px-20 grid -mt-5">
-      <h1>Winter Sale</h1>
-     <h2 className="text-yellow-500 text-md  align-self-center text-center">{price}$</h2>
-     <Button color='gradient' className="flex align-center mt-2 align-self-center "><h4 className="text-center  mt-2">Add to cart</h4></Button>
-     </div>
+function ProductPage({ product, products }) {
+  const { _id,image, name, details, price } = product;
+  //review
+  const [value, setValue] =useState(4.5);
+const {addQty,minQty,qty,addToCart }=useStateManager()
+
+
+  return (
+    <><Link href='/'>
+      <Button size='sm' color='gradient' icon={<KeyboardBackspaceIcon/>} className='ml-2 mb-2'>Back</Button>
+      </Link>   
+
+    <div className="pdPage">
+   
+      <div className="p_left" > 
+      <div className="p_left_header flex justify-between">
+             <Text h1 css={{font:'30px Days One'}}>{name}</Text>
+             <div className="p_left_header_review"> <Rating
+         size="large"   precision={0.5}
+        value={value}
+        onChange={(event, newValue) => {
+          setValue(newValue);
+        }}
+      /><h2 className="text-end">{value}</h2></div>
+            </div>
+        <Image className="p_img"
+        objectFit="contain" src={urlFor(image?.[0])}/>
+        <div className="p_fav flex items-center"> 
+        <h2 className="px-2">{price}$</h2>
+         <Button
+         size='md'
+      color='error'
+        icon={<FavoriteIcon fill="currentColor" filled />}
+      > Add to Wishlist</Button></div>
     
+        
         </div>
-      </div>
+        <div className="p_right">
+          <h1 className="tracking-wide">Details</h1>
+          <div className="p_right_detail px-6 ">
+            <h3>
+              {details}
+            </h3>
+          </div>
+          <h2 className="justify-self-center tracking-wider flex"  style={{fontFamily:'Days one'}}>Final Price__ <h2 className=" tracking-wide flex text-yellow-700"> {(price*qty).toFixed(2)}$</h2></h2>
+          <div className="quantity border-2">
+          <h3 className="q_btn" onClick={minQty}>-</h3>
+          <h2>{qty}</h2>
+          <h3 className="q_btn" onClick={addQty}>+</h3>
+          </div>
+          <Button        
+         className="p_cart"
+        animated={true} 
+       ripple={true}  iconRight={<ShoppingCartIcon fill="currentColor" filled />} onClick={() => addToCart(product,qty)}
+      > Add to cart</Button>
+        </div>
       
     </div>
+     </>
   );
 }
 
@@ -88,9 +98,12 @@ export const getStaticPaths = async () => {
     paths,
     fallback: "blocking",
   };
-};
+};  
 
 export const getStaticProps = async ({ params: { slug } }) => {
+
+
+  
    const query = `*[_type == "product" && slug.current == '${slug}'][0]`;
   const productsQuery = '*[_type == "product"]';
 

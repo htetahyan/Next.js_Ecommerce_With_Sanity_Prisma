@@ -10,6 +10,7 @@ function Footer() {
     <div className="icons flex ">
         <FacebookRoundedIcon className='footerIcon' />
         <EmailRoundedIcon className='footerIcon ' />
+        
     </div>
   </div>
   )

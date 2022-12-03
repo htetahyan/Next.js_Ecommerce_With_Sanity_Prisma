@@ -8,9 +8,6 @@ import { motion } from "framer-motion";
 import Countdown from "./Countdown";
 import CountdownMb from "./CountdownMb";
 function HightLight({ b,index,i}) {
-
-
-
  return (
   <>
   <div  className={index===i?"b_mb b_mbActive":"b_mb"}>
@@ -25,7 +22,6 @@ function HightLight({ b,index,i}) {
   </div>
   <div className={index===i?"b_circle":"b_circle  circleAnimate"}></div>
     <motion.div  className={index===i ? 'banner slide' :'banner '} style={{}}>
-   
 <div className="b_left"><h1>{b?.midText}</h1>
 <h4>{b?.desc}</h4>
 </div>
@@ -33,12 +29,9 @@ function HightLight({ b,index,i}) {
 <div className="b_right"><Countdown b={b}/>
 <Text h2  css={{color:'	#a41a1a',textAlign:'center',font:'50px Days one',background:'white',alignSelf:'center'}}>{b?.price}$</Text>
 <div className="b_btn flex w-3/4  justify-self-center">
-
  <h2>Buy Now!</h2>
  <Spacer x={0.4}/>
-
       <div className="b_btnImg"></div>
-    
 </div>
 </div>
     </motion.div>

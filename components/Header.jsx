@@ -10,15 +10,18 @@ import QuizIcon from '@mui/icons-material/Quiz';
 import {Text} from '@nextui-org/react'
 import InfoIcon from '@mui/icons-material/Info';
 //profilr
-import { User } from "@nextui-org/react";
 
+
+
+import UserAccount from './account/UserAccount';
 function Header() {
-  const [menu,isMenu]=useState(false)
+  const [menu,isMenu]=useState(false);
+
+
   return (
     <div className='header'>
       <h2>Marketify</h2>
       <ul className="lists flex">
-        
         <li><a href="#">Community</a> </li>
         <Spacer/>
         <li><a href="#">FAQ</a> </li>
@@ -26,15 +29,18 @@ function Header() {
         <li><a href="#">About</a> </li>
         <Spacer/>
       </ul>
-        <div className="info flex ">
+        <div className="info flex justify-around px-20">
+      
        <div className="cartIcon"></div>
-       <Spacer y={3}/>
+     
      <h1>|</h1>
-     <Spacer y={3}/>
-  <button className="button-86" role="button">Sign In</button>
+  <UserAccount/>
+
   </div>
-  <div className="h_right flex">
+  <div className="h_right flex justify-center">
+
   <div className="h_cartMb"></div>
+  <Spacer x={2}/>
   <div className='hamburger' onClick={() => isMenu(!menu)}><Hamburger /></div>
   </div>
 
@@ -67,4 +73,4 @@ function Header() {
   )
 }
 
-export default Header
+export default Header;

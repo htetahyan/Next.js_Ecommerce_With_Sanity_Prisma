@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Days+One&family=Fira+Sans:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Days+One&family=Fira+Sans:wght@300&family=Rubik+Glitch&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -47,12 +47,12 @@ a {
 .header {
   z-index: 99;
   display: grid;
-  grid-template-columns: 33% 42% 25%;
-  color: #202636;
+  grid-template-columns: 25% 47% 32%;
+  overflow: hidden;
   align-items: center;
-  height: 7vh;
-  padding: 5px 20px;
-  position: static;
+  height: 13vh;
+  position: -webkit-sticky;
+  position: sticky;
   top: 0;
   /* CSS */
 }
@@ -60,11 +60,12 @@ a {
   font-family: "Days One", sans-serif;
   font-size: 1.5rem;
   letter-spacing: 1px;
+  margin-left: 15px;
   font-weight: bold;
+  color: #0a1929;
 }
 .header .lists {
   justify-self: center;
-  padding-right: 7vw;
 }
 .header .lists li a {
   color: #2d3345;
@@ -135,7 +136,8 @@ a {
 }
 .header .info {
   width: 100%;
-  margin-left: 5vw;
+  align-self: center;
+  justify-self: center;
   align-items: center;
 }
 .header .info .cartIcon {
@@ -156,18 +158,22 @@ a {
 }
 
 @media (orientation: portrait) {
+  .body {
+    overflow: hidden;
+  }
   .header {
     background-color: #0a1929;
     align-items: center;
     position: -webkit-sticky;
     position: sticky;
     top: -1px;
-    width: 102vw;
+    width: 100vw;
     height: 8vh;
     padding: 0;
     overflow: hidden;
-    grid-template-columns: 30% 30%;
-    gap: 40%;
+    display: grid;
+    grid-template-columns: 30% 40%;
+    gap: 30%;
   }
   .header h2 {
     font-size: 1.2rem;
@@ -181,7 +187,9 @@ a {
     display: none;
   }
   .header .h_right {
-    justify-content: space-between;
+    grid-column: 2;
+    grid-row: 1;
+    justify-content: flex-end;
     padding: 0 5px;
     align-items: center;
   }
@@ -233,10 +241,6 @@ a {
     text-shadow: 0 0 10px white;
   }
 }
-.body {
-  min-height: 85vh;
-}
-
 .footer {
   min-height: 8vh;
 }
@@ -253,27 +257,27 @@ a {
 .hl_headerImg {
   display: grid;
   width: 100vw;
-  height: 27vh;
+  height: 20vh;
+  align-self: center;
 }
 
 .hl_header {
   justify-self: center;
   background: url(/text.svg);
   background-repeat: no-repeat;
-  max-width: 100vh;
-  grid-row: 1;
-  grid-column: 1/3;
-  background-size: cover;
+  width: 40vw;
+  background-size: contain;
 }
 
 .hl_previous {
   position: absolute;
-  top: 20%;
+  top: 50vh;
   left: 1.5%;
   cursor: pointer;
   background: url(/prev.png);
   width: 50px;
   height: 50px;
+  z-index: 2;
   background-size: cover;
   transition: transform 0.3s ease-in-out;
 }
@@ -282,9 +286,10 @@ a {
 }
 
 .hl_next {
+  z-index: 1;
   transition: transform 0.3s ease-in-out;
   position: absolute;
-  top: 20%;
+  top: 50vh;
   right: 1.5%;
   cursor: pointer;
   background: url(/next.png);
@@ -297,34 +302,29 @@ a {
 }
 
 .hightlight {
-  height: 100vh;
-  overflow: hidden;
-  grid-template-rows: 20% 70%;
-}
-.hightlight .hl_header {
-  width: 100%;
+  height: 95vh;
+  grid-template-rows: 15% 90%;
 }
 
 .banners {
   display: flex;
   grid-row: 2;
   position: absolute;
-  right: 4.5vw;
-  top: 10%;
+  right: 5vw;
+  top: 0%;
   justify-content: center;
   align-items: center;
   width: 90vw;
-  height: 65vh;
-  overflow: hidden;
 }
 
 .banner {
   position: absolute;
+  overflow: hidden;
   right: 0;
-  top: 0;
+  top: 30vh;
   width: 90vw;
   opacity: 0;
-  height: 100%;
+  height: 75vh;
   visibility: hidden;
   transition-duration: 0.5s ease;
   transform: scale(0.8);
@@ -336,7 +336,7 @@ a {
   transition-duration: 1s;
   transform: scale(1);
   display: grid;
-  grid-template-columns: 30% 40% 30%;
+  grid-template-columns: 30% 35% 35%;
   padding: 10px;
   z-index: 1;
 }
@@ -347,8 +347,15 @@ a {
   justify-content: space-around;
 }
 .slide .b_right {
-  padding: 20px;
+  padding: 10px;
   display: grid;
+  grid-template-rows: 30% 30% 30%;
+}
+.slide .b_right .cd {
+  background-color: rgba(207, 255, 31, 0.9450980392);
+  align-self: center;
+  border-radius: 5px;
+  padding: 5px;
 }
 .slide .b_right h1 {
   color: transparent;
@@ -357,7 +364,7 @@ a {
   font: 5em "Days one", sans-serif;
 }
 .slide .b_img {
-  width: 80%;
+  width: 70%;
   justify-self: center;
   z-index: 0;
 }
@@ -367,19 +374,19 @@ a {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  left: 43vw;
+  left: 41.5vw;
   background-color: #0a1929;
-  top: 28vh;
+  top: 50vh;
   transition: transform 0.7s ease;
 }
 
 .circleAnimate {
   background-color: rgba(5, 7, 10, 0.262745098);
   opacity: 1;
-  top: 45%;
-  left: 48%;
+  top: 50vh;
+  left: 41.5vw;
   border-radius: 50%;
-  transform: scale(10);
+  transform: scale(15);
 }
 
 .b_btn {
@@ -420,26 +427,30 @@ a {
 
 @media (orientation: portrait) {
   .hightlight {
-    height: 90vh;
     width: 101vw;
-    grid-template-rows: 10% 90%;
+    display: grid;
   }
   .hl_headerImg {
-    height: 10vh;
-    width: 70vw;
+    height: 20vh;
+    width: 100vw;
     justify-self: center;
   }
   .hl_header {
+    margin-top: 5vh;
+    height: 80%;
+    width: 80%;
     background-size: contain;
   }
   .slide {
     display: none;
   }
   .banners {
-    top: 7%;
+    top: 22vh;
+    height: 90vh;
   }
-  .hl_previous, .hl_next {
-    top: 80vh;
+  .hl_previous,
+.hl_next {
+    top: 85vh;
   }
   .b_mb {
     display: none;
@@ -483,8 +494,8 @@ a {
   .b_mbActive .b_mb_desc {
     grid-area: 4/1/6/4;
     color: #0a1929;
-    font: 12px "Days one";
-    padding: 5px;
+    font: 10px "Days one";
+    padding: 4px;
   }
   .b_mb_price {
     grid-area: 4/4/6/6;
@@ -494,17 +505,21 @@ a {
     align-self: flex-end;
     text-align: center;
   }
+  .b_circle {
+    top: 30vh;
+  }
   .circleAnimate {
     width: 35px;
     height: 35px;
     left: 40vw;
-    top: 25vh;
+    top: 30vh;
+    transform: scale(10);
   }
   .mb_btn {
     position: absolute;
     display: block;
-    top: 80vh;
-    margin: 0 32.5vw;
+    top: 85vh;
+    right: 33%;
   }
   /* CSS */
   .button-82-pushable {
@@ -596,29 +611,6 @@ a {
     outline: none;
   }
 }
-.pd {
-  width: 100%;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
-  display: grid;
-  gap: 20px;
-  grid-template-columns: 30% 30% 30%;
-}
-.pd .pd_img:hover {
-  z-index: 2;
-}
-
-.pd_txt {
-  background-color: rgba(15, 15, 15, 0.5568627451);
-  padding: 5px;
-  color: rgb(209, 74, 209);
-  -webkit-backdrop-filter: blur(5px);
-          backdrop-filter: blur(5px);
-  pointer-events: none;
-  opacity: 0.8;
-}
-
 .footer {
   background-color: #0b3b44;
   margin-top: 3vh;
@@ -639,83 +631,198 @@ a {
   margin: 0 1.2vw;
 }
 
-.pdPage {
-  background: url(/snowman.png);
-  background-size: cover;
-  background-position: center;
-  min-height: 100vh;
-}
-
-.back {
-  padding: 1.5vh;
-}
-
-.p_img {
-  min-height: 40vh;
-  max-height: 45vh;
-  justify-self: center;
-}
-
-.p {
-  margin-top: 2vh;
-  padding: 2vh;
+.pd {
+  height: 100vh;
   display: grid;
-  grid-template-columns: 35% 50%;
-  gap: 10%;
-  min-height: 80vh;
-  border-radius: 3.5vw 0;
-  /* From https://css.glass */
-  background: rgba(185, 185, 185, 0.21);
-  border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(5.3px);
-  -webkit-backdrop-filter: blur(5.3px);
-  border: 1px solid rgba(185, 185, 185, 0.1);
-  background-image: url(/christmas.png);
-  background-position: center;
-  background-size: 150%;
-  background-repeat: no-repeat;
-}
-.p h1 {
-  font-size: 2.5em;
-  color: transparent;
-  -webkit-text-stroke: 1px rgb(255, 255, 255);
-  text-stroke: 1px rgb(255, 255, 255);
-}
-.p .p_review {
-  max-width: 10vw;
-  margin-bottom: 5px;
-  justify-self: center;
-  max-height: 3vh;
-}
-
-.p_intro {
-  background: rgba(7, 12, 88, 0.447);
-  border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(7, 39, 198, 0.1);
-  -webkit-backdrop-filter: blur(20px);
-          backdrop-filter: blur(20px);
-}
-
-.p_detailsBx {
-  min-height: -webkit-min-content;
-  min-height: -moz-min-content;
-  min-height: min-content;
-  border-radius: 3vw 0;
-  box-shadow: 0 0 5px black;
-  padding: 1.5vh;
-  display: grid;
-  grid-template-rows: 10% 50% 30%;
+  color: #0a1929;
+  grid-template-columns: 10% 85%;
   gap: 3%;
-  background: rgba(7, 12, 88, 0.447);
-  border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(7, 39, 198, 0.1);
-  -webkit-backdrop-filter: blur(20px);
-          backdrop-filter: blur(20px);
 }
-.p_detailsBx p {
-  padding: 2.5vh;
-  color: rgb(252, 252, 252);
-  font-size: 1.6vw;
+
+.category {
+  height: 8vh;
+  margin: 10px;
+  display: flex;
+  grid-column: 2;
+  width: 100%;
+}
+
+.card {
+  transition: box-shadow 0.2s ease;
+}
+.card:hover {
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+.card_header {
+  background-color: #0a1929;
+}
+.card_header b {
+  color: white;
   font-weight: 500;
+  font: 12px "Days one";
+}
+
+.card_body {
+  background-color: rgba(8, 8, 69, 0.7764705882);
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+}
+
+.card_footer {
+  background-color: #0f2227;
+  max-height: 5vh;
+}
+.card_footer .card_price {
+  color: rgb(249, 249, 249);
+}
+
+@media (orientation: portrait) {
+  .pd {
+    display: block;
+  }
+  .filter {
+    grid-row: 1;
+  }
+}
+.pdPage {
+  height: 80vh;
+  color: #0a1929;
+  display: grid;
+  grid-template-columns: 40% auto;
+  gap: 10%;
+}
+
+.p_left {
+  height: 100%;
+  display: grid;
+  gap: 5%;
+  grid-template-rows: 10% 60% 10%;
+  padding: 5px;
+}
+.p_left .p_left_header {
+  padding: 0 10px;
+}
+.p_left .p_left_header h1 {
+  color: #0b3b44;
+  padding-left: 5vw;
+}
+.p_left .p_left_header .p_left_header_review {
+  background-color: rgba(10, 25, 41, 0.7529411765);
+  height: 14vh;
+  align-items: center;
+  display: grid;
+  padding: 5px 10px;
+  border-radius: 1.5vw 0;
+}
+.p_left .p_left_header .p_left_header_review h4 {
+  align-self: center;
+  color: white;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.p_left .p_img {
+  align-self: center;
+  justify-self: center;
+  width: 18vw;
+}
+.p_left .p_fav {
+  justify-content: center;
+}
+.p_left .p_fav h2 {
+  font-size: 3vw;
+  color: rgb(115, 62, 212);
+  letter-spacing: 1.5px;
+  font-family: "Rubik Glitch", cursive;
+}
+
+.p_right {
+  color: #0b3b44;
+  display: grid;
+  grid-template-rows: 15% 40% 10% 13% 10%;
+  row-gap: 1%;
+}
+.p_right h3 {
+  color: #0a1929;
+  font-size: 1.5vw;
+}
+.p_right h3::first-letter {
+  font-size: 30px;
+}
+.p_right .p_cart {
+  width: 15%;
+  background-color: #0b3b44;
+  height: 80%;
+  justify-self: center;
+}
+.p_right .quantity {
+  height: 100%;
+  justify-self: center;
+  display: flex;
+  align-self: center;
+  justify-items: center;
+  align-items: center;
+  color: #0a1929;
+}
+.p_right .quantity .q_btn {
+  font: 30px "Days one";
+  width: 40px;
+  margin: 0 15px;
+  justify-content: center;
+  display: grid;
+  height: 40px;
+  background-color: white;
+  border: 1px black;
+  transition: transform 0.1s ease-in;
+}
+.p_right .quantity .q_btn:hover {
+  transform: scale(1.1);
+}
+
+.filter {
+  color: #0b3b44;
+}
+.filter ul li {
+  padding-left: 5px;
+}
+.filter ul li::marker {
+  content: "<";
+  color: #0b3b44;
+}
+.filter ul li p::first-letter {
+  text-transform: capitalize;
+}
+.filter ul .listClicked {
+  color: #1c7eff;
+  -webkit-animation-name: fadeIn;
+          animation-name: fadeIn;
+  -webkit-animation-duration: 0.5s;
+          animation-duration: 0.5s;
+}
+.filter ul .listClicked::marker {
+  content: ">";
+  color: #0b3b44;
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1;
+  }
 }/*# sourceMappingURL=globals.css.map */
