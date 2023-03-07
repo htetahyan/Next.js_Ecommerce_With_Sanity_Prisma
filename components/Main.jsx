@@ -1,20 +1,21 @@
 import { useState, useEffect } from "react";
 import Head from "next/head";
-
 //sllider
 
 /* import Header from './Header'; */
 import HightLight from "./hightlights/HightLight";
 
 import Footer from "./Footer";
-import Category from "./Category/Category";
-import { Text, Grid } from "@nextui-org/react";
+
+import { Text} from "@nextui-org/react";
 import Handler from "./Category/Handler";
+
 const Main = ({ products, banners }) => {
 
- const categoryArr= products.map(p => p.category);
-const  listItems= [...new Set(categoryArr)].sort()
-
+  const categoryArr = products.map((p) => p.category);
+  const categoryList = [...new Set(categoryArr)].sort();
+  const [listItems, setlistItems] = useState(["all", ...categoryList]);
+  console.log(listItems);
 
   const [i, setIndex] = useState(0);
   const length = banners.length - 1;
@@ -24,8 +25,8 @@ const  listItems= [...new Set(categoryArr)].sort()
   const prev = () => {
     setIndex(i == 0 ? length : i - 1);
   };
-  const [cate, setCate] = useState("All");
 
+  const [cate, setCate] = useState("all");
   return (
     <>
       <Head>
@@ -42,17 +43,23 @@ const  listItems= [...new Set(categoryArr)].sort()
               <div className="hl_header img"></div>
             </div>
             <div className="hl_previous" onClick={prev}></div>
-            <div className="mb_btn">
-              <button className="button-82-pushable" role="button">
-                <span className="button-82-shadow"></span>
-                <span className="button-82-edge"></span>
-                <span className="button-82-front text">Buy Now!</span>
-              </button>
-            </div>
+            
             <div className="banners">
               {banners.map((b, index) => {
                 return <HightLight index={index} i={i} key={b._id} b={b} />;
               })}
+            </div>
+            <div className="mb_btn ">
+         
+       
+<button class="button-82-pushable" role="button">
+  <span class="button-82-shadow"></span>
+  <span class="button-82-edge"></span>
+  <span class="button-82-front text">
+   Buy Now!
+  </span>
+</button>
+
             </div>
             <div className="hl_next" onClick={next}></div>
           </div>
@@ -67,33 +74,49 @@ const  listItems= [...new Set(categoryArr)].sort()
           >
             Trending Products
           </Text>
+
           <div className="pd">
-            <div className="filter">
-              <h3>Category</h3>
-              <ul className="fllterItem px-5 text-[#0b3b44]">
-                {listItems.map((l, index) => {
-                  return (
-                    <li
-                      className={
-                        cate == l
-                          ? "text-[#0b3b44] listClicked"
-                          : "text-[#0b3b44]"
-                      }
-                      key={index}
-                      onClick={() => setCate(l)}
-                    >
-                      <p>{l}</p>
-                    </li>
-                  );
-                })}
-              </ul>
+            <div className="filter flex">
+              <div className="categoryContainer">
+                {" "}
+                <li className="pd_header flex">Category</li>
+                <ul className="fllterItem px-5 text-[#0b3b44]">
+                  {listItems.map((l, index) => {
+                    return (
+                      <li
+                        className={
+                          cate == l
+                            ? "text-[#0b3b44] listClicked"
+                            : "text-[#0b3b44]"
+                        }
+                        key={index}
+                        onClick={() => setCate(l)}
+                      >
+                        <p>{l}</p>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>{" "}
+        
+       {/*          <div className="srhResults">
+                  {searchInput.length > 0 &&
+                    filtred?.map((f) => {
+                      return (
+                        <Link href={`/product/${f.slug.current}`}>
+                          <p>{f?.name}</p>
+                        </Link>
+                      );
+                    })}
+                </div> */}
+          
             </div>
 
-            <Grid.Container gap={2} justify="flex-start" className="category">
+            <div className="category ">
               {products.map((p) => {
                 return <Handler p={p} cate={cate} />;
               })}
-            </Grid.Container>
+            </div>
           </div>
         </div>
         <Footer />

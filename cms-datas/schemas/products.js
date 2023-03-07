@@ -27,6 +27,6 @@ export default {
             name:'details',title:'Details', type:'string',
         },{
             name:'category',title:'Category', type:'string',
-        },{name:'itemleft',title:'ItemLeft',type:'number'}
+        }
     ]
 }

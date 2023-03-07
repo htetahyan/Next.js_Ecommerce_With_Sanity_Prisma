@@ -1,5 +1,4 @@
 import { urlFor } from "../../lib/client";
-import Image from'next/image'
 import {Spacer, Text} from '@nextui-org/react'
 //slick slide
 // animation

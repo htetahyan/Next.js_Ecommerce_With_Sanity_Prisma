@@ -4,9 +4,8 @@ import { urlFor } from '../../lib/client';
 import { Avatar } from '@mui/material';
 import Link from 'next/link'
 function Category({ p: { image, name, slug, price, category } }) {
-
   return (
-    <Grid xs={6} sm={3}className='cards' >
+    <Grid className='cards' >
       <Card isPressable disableAnimation='false' className='card'>
       <Card.Header className='card_header'>
       <Text b className='card_name' >{name}</Text>
@@ -31,7 +30,7 @@ function Category({ p: { image, name, slug, price, category } }) {
         </Card.Footer>
         </Link>
       </Card>
-    </Grid>
+    </Grid> 
 )
 }
 

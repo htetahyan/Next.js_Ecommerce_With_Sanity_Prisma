@@ -1,11 +1,13 @@
 import React from "react";
+import Header from "../components/Header";
 import Main from "../components/Main";
 import { client } from "../lib/client";
 function index({ products, banners }) {
   return (
     <div>
+  
       <Main products={products} banners={banners}>
-        
+      
       </Main>
     </div>
   );

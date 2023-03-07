@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 
 import Link from 'next/link'
+import Product from "../../components/Product";
 
 import { Button, Text} from '@nextui-org/react';
 import {client,urlFor} from '../../lib/client'
@@ -10,6 +11,7 @@ import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { useStateManager } from "../../state manager/Context";
+import { useRouter } from 'next/router'
 //handle review
 import Rating from '@mui/material/Rating';
 
@@ -21,14 +23,14 @@ const {addQty,minQty,qty,addToCart }=useStateManager()
 
 
   return (
-    <><Link href='/'>
-      <Button size='sm' color='gradient' icon={<KeyboardBackspaceIcon/>} className='ml-2 mb-2'>Back</Button>
+    <>{/* <Link href='/'>
+      <Button size='sm' color='gradient' icon={<KeyboardBackspaceIcon/>} className='ml-2 mb-2 pdBack'>Back</Button>
       </Link>   
-
+ */}
     <div className="pdPage">
    
       <div className="p_left" > 
-      <div className="p_left_header flex justify-between">
+      <div className="p_left_header flex">
              <Text h1 css={{font:'30px Days One'}}>{name}</Text>
              <div className="p_left_header_review"> <Rating
          size="large"   precision={0.5}
@@ -43,10 +45,11 @@ const {addQty,minQty,qty,addToCart }=useStateManager()
         <div className="p_fav flex items-center"> 
         <h2 className="px-2">{price}$</h2>
          <Button
-         size='md'
+         size='sm'
       color='error'
+      className="favBtn"
         icon={<FavoriteIcon fill="currentColor" filled />}
-      > Add to Wishlist</Button></div>
+      >WistLists</Button></div>
     
         
         </div>
@@ -57,7 +60,7 @@ const {addQty,minQty,qty,addToCart }=useStateManager()
               {details}
             </h3>
           </div>
-          <h2 className="justify-self-center tracking-wider flex"  style={{fontFamily:'Days one'}}>Final Price__ <h2 className=" tracking-wide flex text-yellow-700"> {(price*qty).toFixed(2)}$</h2></h2>
+          <h2 className="justify-self-center  tracking-wider flex"  style={{fontFamily:'Days one'}}>Total__ <h2 className=" tracking-wide flex text-yellow-700"> {(price*qty).toFixed(2)}$</h2></h2>
           <div className="quantity border-2">
           <h3 className="q_btn" onClick={minQty}>-</h3>
           <h2>{qty}</h2>
@@ -69,7 +72,16 @@ const {addQty,minQty,qty,addToCart }=useStateManager()
        ripple={true}  iconRight={<ShoppingCartIcon fill="currentColor" filled />} onClick={() => addToCart(product,qty)}
       > Add to cart</Button>
         </div>
-      
+      <div className="otherProduct">
+        <h1 className="text-[#0b3b44] bold" style={{font:'8vw Days one'}}>Products You May Like</h1>
+        <div className="marquee">
+            <div className="maylike-products-container track flex" style={{overflow:'hidden'}}>
+              {products.map((item) => (
+                <Product key={item._id} product={item} />
+              ))}
+            </div>
+          </div>
+      </div>
     </div>
      </>
   );
@@ -79,40 +91,36 @@ export default ProductPage;
 
 export const getStaticPaths = async () => {
   const query = `*[_type == "product"] {
-      slug {
-        current
-      }
+    slug {
+      current
     }
-    `;
+  }
+  `;
 
-  const products= await client.fetch(query);
+  const products = await client.fetch(query);
 
-  const paths = products.map((p) => {
-    return{ 
-    params: {
-      slug: p.slug.current,
-    }}
-});
+  const paths = products.map((product) => ({
+    params: { 
+      slug: product.slug.current
+    }
+  }));
 
   return {
     paths,
-    fallback: "blocking",
-  };
-};  
+    fallback: 'blocking'
+  }
+}
 
-export const getStaticProps = async ({ params: { slug } }) => {
-
-
+export const getStaticProps = async ({ params: { slug }}) => {
+  const query = `*[_type == "product" && slug.current == '${slug}'][0]`;
+  const productsQuery = '*[_type == "product"]'
   
-   const query = `*[_type == "product" && slug.current == '${slug}'][0]`;
-  const productsQuery = '*[_type == "product"]';
-
   const product = await client.fetch(query);
   const products = await client.fetch(productsQuery);
 
   console.log(product);
 
   return {
-    props: { product, products },
-  };
-};
+    props: { products, product }
+  }
+}
