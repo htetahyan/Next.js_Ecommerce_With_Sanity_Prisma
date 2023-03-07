@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
+
 import {AiFillHome} from 'react-icons/ai'
 import { Text } from '@nextui-org/react'
 import {Button} from '@nextui-org/react'
 import { useStateManager } from '../state manager/Context'
-function success() {
+function Success() {
     const {setitems,setTotalPrice,setTotalQty}=useStateManager()
-    const [success,setSuccess]=useState(null)
+
 useEffect(()=> {
 localStorage.clear();
 setTotalPrice(0);
@@ -30,4 +30,4 @@ setitems(0)
   )
 }
 
-export default success
+export default Success

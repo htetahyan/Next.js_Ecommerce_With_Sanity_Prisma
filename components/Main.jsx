@@ -1,3 +1,6 @@
+
+/* eslint-disable react/no-unknown-property */
+
 import { useState, useEffect } from "react";
 import Head from "next/head";
 //sllider
@@ -56,7 +59,7 @@ const Main = ({ products, banners }) => {
   <span class="button-82-shadow"></span>
   <span class="button-82-edge"></span>
   <span class="button-82-front text">
-   Buy Now!
+   Buy Now
   </span>
 </button>
 
@@ -114,7 +117,7 @@ const Main = ({ products, banners }) => {
 
             <div className="category ">
               {products.map((p) => {
-                return <Handler p={p} cate={cate} />;
+                return <Handler key={p._id} p={p} cate={cate} />;
               })}
             </div>
           </div>

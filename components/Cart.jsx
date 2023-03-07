@@ -85,13 +85,13 @@ stripe.redirectToCheckout({ sessionId: data.id });
         <Modal.Body>
          
         {items.map(item=> (
-          <Grid className='cartBody' css={{
+          <Grid key={item._id}  className='cartBody' css={{
           display:'flex' ,alignItems:'center',display:'flex',color:'#0a1929' ,background:'$accents2',padding:'10px',
           height:'15%',justifyContent:'space-around',
             '@xs':{
           
               background:'#f3f3f3',alignItems:'center',display:'flex',color:'#0a1929', justifyContent:'space-between',borderRadius:'5px'}}}>
-            <Text h4 css={{'@xs':{maxWidth:'20%',maxWidth:'10%',    fontSize:'1.5vw',},fontFamily:'days one',fontSize:'3vw',maxWidth:'15%',zIndex:'1'}}>{item.name}</Text>
+            <Text h4  css={{'@xs':{maxWidth:'20%',maxWidth:'10%',    fontSize:'1.5vw',},fontFamily:'days one',fontSize:'3vw',maxWidth:'15%',zIndex:'1'}}>{item.name}</Text>
       
         <img src={urlFor(item.image[0])} style={{
           maxHeight:'10vh'
