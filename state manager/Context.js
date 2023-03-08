@@ -48,7 +48,7 @@ if(quantity>0){
     setTotalQty((prev) => prev + quantity);
 }else null;
     quantity === 0
-      ? toast.error("wrong")
+      ? toast.error("Please add atleast 1 item!")
       : toast.success(`Added ${quantity} ${product.name} to your cart! `);
   };
   const Removeitem = (product) => {

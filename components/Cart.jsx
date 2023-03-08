@@ -34,7 +34,7 @@ export default function App() {
     light: '(prefers-color-scheme: light)' */
   };
   const {addQty,minQty,qty,addToCart,totalQty,items,totalprice ,qtyContriol,Removeitem}=useStateManager()
-  const [sort,setSort]=useState([])
+
 
   const handled=async()=> {
 const stripe=await getStripe();   

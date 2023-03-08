@@ -31,7 +31,7 @@ const {addQty,minQty,qty,addToCart }=useStateManager()
    
       <div className="p_left" > 
       <div className="p_left_header flex">
-             <Text h1 css={{font:'30px Days One',zIndex:'3'}}>{name}</Text>
+             <Text h1 css={{font:'30px Days One'}}>{name}</Text>
              <div className="p_left_header_review"> <Rating
          size="large"   precision={0.5}
         value={value}

@@ -1,12 +1,32 @@
 import { urlFor } from "../../lib/client";
 import {Spacer, Text} from '@nextui-org/react'
 //slick slide
+import { toast } from "react-hot-toast";
+import getStripe from "../../lib/Stripe";
 // animation
 import { motion } from "framer-motion";
 
 import Countdown from "./Countdown";
 import CountdownMb from "./CountdownMb";
 function HightLight({ b,index,i}) {
+  const handled=async()=> {
+    const stripe=await getStripe();   
+     const response = await fetch('/api/stripe', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(b)
+    });
+    
+    if(response.statusCode === 500) return;
+    
+    const data = await response.json();
+    
+    toast.loading('Redirecting...');
+    
+    stripe.redirectToCheckout({ sessionId: data.id });
+      }
  return (
   <>
   <div  className={index===i?"b_mb b_mbActive":"b_mb"}>
@@ -30,7 +50,7 @@ function HightLight({ b,index,i}) {
 <div className="b_btn flex w-3/4  justify-self-center">
  <h2>Buy Now!</h2>
  <Spacer x={0.4}/>
-      <div className="b_btnImg"></div>
+      <div className="b_btnImg" onClick={handled}></div>
 </div>
 </div>
     </motion.div>
