@@ -334,18 +334,20 @@ justify-self: center;
 height: max-content;
   
     .marquee{
-      height: 50vh;  
+   
+      
     
     }}
   .track {
     
-    position: absolute;
+ 
     white-space: nowrap;
     will-change: transform;
+    
     .ml-4{
       margin-left: 2vw;
-      img{object-fit: contain;
-        max-height: 10%;
+      img{
+        max-height: 200px;
       }}
     }
 
@@ -364,7 +366,7 @@ height: max-content;
     overflow: hidden;
     justify-content: space-between;
 .info{
-  width: 35%;
+  width: 50%;
 
   padding: 0 3%;
   justify-content: space-between;

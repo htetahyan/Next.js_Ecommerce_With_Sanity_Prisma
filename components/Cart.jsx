@@ -132,12 +132,13 @@ stripe.redirectToCheckout({ sessionId: data.id });
 
         </div>
         </Modal.Body>
-        <Button 
+        {items.length>0 && <Button 
         onClick={handled}
         css={{fontSize:'1.5rem',width:'4%',margin:'0 auto',alignItems:'center',background:'orange',boxShadow:'0 0 9px 2px black'}} iconRight={<FaCcStripe fill="currentColor" />} >
       Pay With
 
-        </Button>
+        </Button>}
+        
         <Modal.Footer>
           <Button flat auto color="secondary" onPress={() => setVisible(false)}>
             Close
