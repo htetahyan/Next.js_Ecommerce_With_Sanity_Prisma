@@ -18,7 +18,7 @@ export default UserAccount
 export const Profile=()=> {
    const  {data:session}=useSession();
 return(
-<User css={{marginLeft:'23%'}} onClick={()=> signOut('Google')}
+<User css={{marginLeft:'23%'}} onClick={()=> signOut('google')}
 src={session.user.image}
       name={session?.user?.name}
       zoomed
