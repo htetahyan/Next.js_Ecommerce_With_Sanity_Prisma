@@ -441,7 +441,6 @@ a {
   grid-template-rows: 30% 30% 30%;
 }
 .slide .b_right .cd {
-  background-color: rgba(207, 255, 31, 0.9450980392);
   align-self: center;
   border-radius: 5px;
   padding: 5px;
