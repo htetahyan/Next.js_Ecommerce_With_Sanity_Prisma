@@ -9,7 +9,7 @@ function UserAccount() {
  console.log(session);
   return (
     <>
-       {session? <Profile/>:<button className="button-86 ml-10" role="button" onClick={() => signIn('google'/* ,{callbackUrl: 'https://marketify.vercel.app/'} */)}>Sign In</button>}
+       {session? <Profile/>:<button className="button-86 ml-10" role="button" onClick={() => signIn('google',{callbackUrl: 'https://marketify.vercel.app/'})}>Sign In</button>}
     </>
    )
 }
