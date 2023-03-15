@@ -57,6 +57,9 @@ console.log(credentials);
   pages: {
     signIn: "/auth/signin",
 
+  },secret:'iAmGayNowYouKnow',
+  jwt:{
+secret:'test'
   },
   callbacks: {
     jwt(params) {
