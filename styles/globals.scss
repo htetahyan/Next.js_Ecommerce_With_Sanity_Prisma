@@ -83,6 +83,7 @@ a {
   background-size:110%;
   height: 90vh;
   background-position: center;
+
  }
 //loader
 .loader{
@@ -393,9 +394,14 @@ justify-self: center;
     background-size: 120%;
     background-position: center;
     height: 93vh;
+    a,h7{
+      text-shadow: 0 0 10px;
+      color: rgb(0, 255, 213);
+    }
     .forms{
       background-color: #1b1b1b85;
       backdrop-filter: blur(2px);
+ 
     }
   }
   .otherProduct{

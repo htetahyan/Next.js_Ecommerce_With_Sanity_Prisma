@@ -346,6 +346,10 @@ a {
     background-position: center;
     height: 93vh;
   }
+  .auth-forms a, .auth-forms h7 {
+    text-shadow: 0 0 10px;
+    color: rgb(0, 255, 213);
+  }
   .auth-forms .forms {
     background-color: rgba(27, 27, 27, 0.5215686275);
     -webkit-backdrop-filter: blur(2px);
