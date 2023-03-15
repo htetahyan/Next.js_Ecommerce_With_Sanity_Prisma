@@ -53,13 +53,10 @@ console.log(credentials);
     },
   
   }, */
-  
+  secret:"IHateThisDaySucks",
   pages: {
     signIn: "/auth/signin",
 
-  },secret:'iAmGayNowYouKnow',
-  jwt:{
-secret:'test'
   },
   callbacks: {
     jwt(params) {
