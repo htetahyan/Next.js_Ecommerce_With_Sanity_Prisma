@@ -14,13 +14,14 @@ import { useStateManager } from "../../state manager/Context";
 import { useRouter } from 'next/router'
 //handle review
 import Rating from '@mui/material/Rating';
+import Footer from "../../components/Footer";
 
 function ProductPage({ product, products }) {
   const { _id,image, name, details, price } = product;
   //review
   const [value, setValue] =useState(4.5);
-const {addQty,minQty,qty,addToCart }=useStateManager()
-
+const {addQty,minQty,qty,addToCart,role }=useStateManager()
+console.log(role);
 
   return (
     <>{/* <Link href='/'>
@@ -41,6 +42,7 @@ const {addQty,minQty,qty,addToCart }=useStateManager()
       /><h2 className="text-end">{value}</h2></div>
             </div>
         <Image className="p_img"
+  
         objectFit="contain" src={urlFor(image?.[0])}/>
         <div className="p_fav flex items-center"> 
         <h2 className="px-2">{price}$</h2>
@@ -80,9 +82,10 @@ const {addQty,minQty,qty,addToCart }=useStateManager()
                 <Product key={item._id} product={item} />
               ))}
             </div>
-          </div>
+          </div>    <Footer/>
       </div>
     </div>
+
      </>
   );
 }

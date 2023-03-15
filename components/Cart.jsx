@@ -9,8 +9,9 @@ import { FaCcStripe } from 'react-icons/fa';
 import { useEffect, useState } from 'react';
 import { padding, textAlign } from '@mui/system';
 import getStripe from '../lib/Stripe'
+import {useSession } from 'next-auth/react'
 export default function App() {
-
+const{data:session}=useSession()
   const media = {
     xs: `(max-width: '768px`,/* 
     sm: `(min-width: ${defaultTokens.breakpoints.sm})`,
@@ -38,6 +39,7 @@ export default function App() {
 
   const handled=async()=> {
 const stripe=await getStripe();   
+setVisible(false)
  const response = await fetch('/api/stripe', {
   method: 'POST',
   headers: {
@@ -58,7 +60,7 @@ stripe.redirectToCheckout({ sessionId: data.id });
   console.log(totalprice);
   return (
     <div className='cartContainer'>
-      <Button className="cartIcon" auto flat onPress={() => setVisible(true)}>
+      <Button className="cartIcon" style={session ? {} : { pointerEvents: 'none' }} auto flat onPress={() => setVisible(true)}>
    {items.length}
       </Button>
       <Modal

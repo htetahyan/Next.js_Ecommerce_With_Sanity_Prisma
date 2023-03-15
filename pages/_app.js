@@ -7,9 +7,9 @@ import {SessionProvider} from 'next-auth/react'
 import Header from '../components/Header';
 import { StateManager } from '../state manager/Context';
 import {Toaster} from 'react-hot-toast'
-function MyApp({ Component, pageProps,session,products}) {
+function MyApp({ Component, pageProps,products}) {
   return ( 
-    <SessionProvider session={session}>
+    <SessionProvider session={pageProps.session}>
     <StateManager>
  
     <Toaster/>

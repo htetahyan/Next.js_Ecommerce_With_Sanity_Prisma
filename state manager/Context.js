@@ -19,8 +19,10 @@ router.replace(router.push)
   const [qty, setQty] = useState(0);
   const [totalQty, setTotalQty] = useState(0);
   const [totalprice, setTotalPrice] = useState(0);
+  const [role,setRole]=useState()
   
-  const addToCart = (product, quantity) => {
+
+    const addToCart = (product, quantity) => {
     
     const checkItems = items.find((i) => i._id === product._id);
   
@@ -82,9 +84,10 @@ if(value === 'inc') {
 
 const addQty = () => (qty === 10 ? setQty(qty) : setQty(qty + 1));
 const minQty = () => (qty === 0 ? setQty(qty) : setQty(qty - 1));
+
 return (
   <Context.Provider
-    value={{setitems,setTotalPrice,setTotalQty, items, showCartNoti, qty, totalQty, addQty, minQty, addToCart,setShowCartNoti ,qtyContriol,Removeitem,totalprice}}
+    value={{setitems,setTotalPrice,setTotalQty, items, showCartNoti, qty, totalQty, addQty, minQty, addToCart,setShowCartNoti ,qtyContriol,Removeitem,totalprice,role,setRole}}
   >
     {children}
   </Context.Provider>

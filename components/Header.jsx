@@ -4,20 +4,15 @@ import Hamburger from 'hamburger-react'
 import { styled } from '@mui/material/styles';
 import { useState } from 'react'
 //portrait Icons
-import { client } from '../lib/client'
-import GoogleIcon from '@mui/icons-material/Google';
-import PeopleIcon from '@mui/icons-material/People';
-import QuizIcon from '@mui/icons-material/Quiz';
-import {Text} from '@nextui-org/react'
-import InfoIcon from '@mui/icons-material/Info';
+
 import Tooltip, { tooltipClasses }  from '@mui/material/Tooltip';
 //profilr
-import Zoom from '@mui/material/Zoom';
-import Image from 'next/dist/client/image'
+import {useSession} from 'next-auth/react'
 import Link from 'next/link'
 import UserAccount from './account/UserAccount';
 import Cart from './Cart'
 const Header=()=> {
+  const{data:session}=useSession()
   const CustomWidthTooltip = styled(({ className, ...props }) => (
     
     <Tooltip {...props} classes={{ popper: className }} />
@@ -33,8 +28,8 @@ const Header=()=> {
 
   return (
     <div className='header'>
-      <Link href='/'>
-      <h2>Marketify</h2></Link>
+    {session? <Link href='/'>
+      <h2>Marketify</h2></Link>:  <h2>Marketify</h2>}
       <ul className="lists flex">
         <li><a href="#">Community</a> </li>
         <Spacer/>
