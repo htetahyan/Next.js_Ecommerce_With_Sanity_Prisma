@@ -1,4 +1,5 @@
-// pages/signup.js
+
+/* eslint-disable react/no-unknown-property */
 
 import { useState } from "react";
 import { useRouter } from "next/router";

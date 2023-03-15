@@ -3,27 +3,25 @@ import Header from "../components/Header";
 import Main from "../components/Main";
 import { client } from "../lib/client";
 
+/* eslint-disable react/no-unknown-property */
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 
 import {useSession} from 'next-auth/react'
 import Loader from "../components/Loader";
-function index({ products, banners }) {
+function Index({ products, banners }) {
 const [loading,setLoading]=useState(false)
   const router = useRouter();
 const {data:session}=useSession()
-  useEffect(() => {
+  useEffect(() => { 
    ! session&&setLoading(true);
     setTimeout(() => {
       setLoading(false)
       async function checkAuth() {
-
-
         if (!session) {
           router.push("/signin");
         }
       }
-  
       checkAuth();
     }, 2000);
  
@@ -40,7 +38,7 @@ const {data:session}=useSession()
   );
 }
 
-export default index;
+export default Index;
 
 export const getServerSideProps = async () => {
 
