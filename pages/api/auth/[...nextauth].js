@@ -54,10 +54,7 @@ console.log(credentials);
   
   }, */
   
-  pages: {
-    signIn: "/auth/signin",
 
-  },
   callbacks: {
     jwt(params) {
       // update token
