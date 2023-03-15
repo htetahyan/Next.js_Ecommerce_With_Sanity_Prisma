@@ -35,15 +35,36 @@ console.log(credentials);
   session: {
     strategy: "jwt",
   },
+ /* 
+  callbacks: {
+    async session(session, token) {
+      session.user = token.user;
+      return session;
+    },
+    async jwt({ token, user }) {
+      if (user) {
+        token.user = user;
+      }return token
+    },    session: {
+      jwt: true,
+      maxAge: 30 * 24 * 60 * 60,
+    },  pages: {
+      signIn: "/sigin",
+    },
+  
+  }, */
+  
+  pages: {
+    signIn: "/auth/signin",
 
-secret:'iAmGay',
+  },
   callbacks: {
     jwt(params) {
-    
+      // update token
       if (params.user?.role) {
         params.token.role = params.user.role;
       }
-   
+      // return final_token
       return params.token;
     }, 
   },
