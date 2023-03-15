@@ -1,3 +1,5 @@
+
+/* eslint-disable react/no-unknown-property */
 import Link from "next/link";
 import React, { useState } from "react";
 import { useRouter } from "next/router";
@@ -33,7 +35,7 @@ function Signin() {
         } else {
     setLoad(true)
       toast.closeDelay = 3000;
-           toast.success(`welcome`)
+           toast.success('welcome')
 setTimeout(() => {
     router.push('/')
 }, 2000);
