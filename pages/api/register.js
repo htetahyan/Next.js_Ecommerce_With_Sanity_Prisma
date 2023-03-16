@@ -1,7 +1,6 @@
-import { PrismaClient, Prisma } from "@prisma/client";
-import bcrypt from "bcryptjs";
-import NextAuth from "next-auth";
-const prisma = new PrismaClient();
+
+import prisma from '../../lib/prisma'
+
 
 export default async function handler(req, res) {
   const { name, email, password } = req.body;
