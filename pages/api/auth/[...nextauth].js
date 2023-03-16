@@ -18,7 +18,7 @@ export default NextAuth({
         if (!user) {
           throw new Error("No user found");
         }
-console.log(credentials);
+
       
         if (credentials.password!=user.password) {
           throw new Error("Incorrect password");

@@ -18,7 +18,7 @@ const Main = ({ products, banners }) => {
   const categoryArr = products.map((p) => p.category);
   const categoryList = [...new Set(categoryArr)].sort();
   const [listItems, setlistItems] = useState(["all", ...categoryList]);
-  console.log(listItems);
+
 
   const [i, setIndex] = useState(0);
   const length = banners.length - 1;

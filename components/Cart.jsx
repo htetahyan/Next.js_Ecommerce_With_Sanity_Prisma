@@ -57,7 +57,7 @@ toast.loading('Redirecting...');
 stripe.redirectToCheckout({ sessionId: data.id });
   }
   const { setVisible, bindings } = useModal(false);
-  console.log(totalprice);
+
   return (
     <div className='cartContainer'>
       <Button className="cartIcon" style={session ? {} : { pointerEvents: 'none' }} auto flat onPress={() => setVisible(true)}>

@@ -36,7 +36,7 @@ export default UserAccount
 export const Profile = () => {
 const{setRole}=useStateManager()
   const { data: session } = useSession()
-console.log(session);
+
 const email=session.user.email
 useEffect(() => {
 
@@ -51,7 +51,7 @@ useEffect(() => {
       .then(response => response.json())
       .then(data => {
         // Handle successful response
-        console.log(data);
+
         setRole(data.role)
       })
       .catch(error => {
