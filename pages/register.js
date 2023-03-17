@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/no-unknown-property */
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { getSession } from "next-auth/react";
 import Link from 'next/link' 
@@ -16,7 +16,9 @@ const [name,setName]=useState('')
 const [fetchload,setFetchload]=useState(false)
 const [message, setMessage] = useState("");
   async function handleSubmit(event) {
-    event.preventDefault();
+
+     event.preventDefault();
+     if(name.length&&password.length>0){
 setFetchload(true);
     const response = await fetch("/api/register", {
       method: "POST",
@@ -37,7 +39,9 @@ setFetchload(true);
       setFetchload(false)
 
     }
-  
+  }else{
+    setMessage('err')
+  }
   }
   
 
@@ -62,7 +66,9 @@ setFetchload(true);
                     type="text"
                     placeholder='htetahyan'
                     value={name}
-                    onChange={(e) => setName(e.target.value)}
+                    onChange={(e) => {setName(e.target.value);
+                      setMessage()
+                    }}
                     className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
                 />
             </div>
@@ -77,7 +83,9 @@ setFetchload(true);
                     type="email"
                     placeholder='htetahyan@gmail.com'
                     value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={(e) =>{ setEmail(e.target.value);
+                      setMessage();
+                    }}
                     className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
                 />
             </div>
@@ -92,7 +100,10 @@ setFetchload(true);
                     type="password"
                     value={password}
                     placeholder='********'
-                    onChange={(e) => setPassword(e.target.value)}
+                    onChange={(e) => {setPassword(e.target.value);
+                      setMessage()
+                    }
+                  }
                     className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
                 />
             </div>
@@ -104,7 +115,7 @@ setFetchload(true);
               Register
                 </button>
             </div>
-            {message && <p style={{color:'red'}}>User Existed!</p>}
+            {message && <p style={{color:'red'}}>Error creating user!</p>}
             
         <p className="mt-8 text-sm text-bold font-light text-center ">
             {" "}
