@@ -62,6 +62,14 @@ a {
   }
 }
  */
+.Fetchloader {
+  z-index: 100;
+  box-shadow: inset 10000px 10px 10px rgba(0, 0, 0, 0.333);
+}
+.Fetchloader .loadingcomponents {
+  margin-top: 20vh;
+}
+
 .auth-forms {
   background: url("/loadingbg.png") no-repeat;
   background-size: 110%;
@@ -334,6 +342,14 @@ a {
   }
 }
 @media (orientation: portrait) {
+  .Fetchloader {
+    z-index: 100;
+    box-shadow: inset 10000px 10px 10px rgba(0, 0, 0, 0.333);
+  }
+  .Fetchloader .loadingcomponents {
+    align-self: center;
+    margin-top: 0;
+  }
   .loader {
     background: url("/loadingbgmb.png");
     background-size: 110%;

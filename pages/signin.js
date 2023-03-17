@@ -8,6 +8,7 @@ import { toast } from "react-hot-toast";
 import { useStateManager } from "../state manager/Context";
 import { Button, Grid, Loading } from "@nextui-org/react";
 import {getSession} from 'next-auth/react'
+import FetchLoader from "../components/FetchLoader";
 function Signin() {
   
     const [email, setEmail] = useState("");
@@ -15,7 +16,7 @@ function Signin() {
     const [load,setLoad]=useState(false)
     const { data: session } = useSession()
   const router=useRouter()
-  
+  const [fetchload,setFetchload]=useState(false)
   if (session) {
     router.push("/");
     return null;
@@ -23,7 +24,7 @@ function Signin() {
 
     const Handler = async (e) => {
         event.preventDefault();
-
+setFetchload(true)
         const result= await signIn("credentials", {
           redirect: false,
           email,
@@ -32,20 +33,22 @@ function Signin() {
     
         if (result.error) {
         toast.error('Wrong Email or Password!')
+        setFetchload(false)
         } else {
     setLoad(true)
+    setFetchload(false)
       toast.closeDelay = 3000;
            toast.success('welcome')
 setTimeout(() => {
     router.push('/')
-}, 2000);
+}, 3000);
       
 
         }
     };
   return (
     <div className="relative flex flex-col justify-center min-h-[80vh]  overflow-hidden  auth-forms">
-
+{fetchload&&<FetchLoader/>}
     <div className="w-full p-6 m-auto bg-[#0e1929] rounded-md shadow-xl shadow-rose-600/40 ring ring-2 ring-purple-600 lg:max-w-xl forms">
         <h1 className="text-3xl font-semibold text-center text-purple-700 underline uppercase decoration-wavy" style={{fontFamily:'days one'}}>
           Marketify

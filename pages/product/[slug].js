@@ -1,33 +1,37 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 
-import Link from 'next/link'
+
 import Product from "../../components/Product";
 
 import { Button, Text} from '@nextui-org/react';
 import {client,urlFor} from '../../lib/client'
 import{ Image }from "@nextui-org/react";
-import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
+
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { useStateManager } from "../../state manager/Context";
-import { useRouter } from 'next/router'
+import { useRouter }from 'next/router'
 //handle review
 import Rating from '@mui/material/Rating';
 import Footer from "../../components/Footer";
-
+import {useSession} from 'next-auth/react'
 function ProductPage({ product, products }) {
+  const router=useRouter()
+  const {data:session}=useSession()
   const { _id,image, name, details, price } = product;
   //review
   const [value, setValue] =useState(4.5);
 const {addQty,minQty,qty,addToCart,role }=useStateManager()
 console.log(role);
+useEffect(() => {
+  if (!session) {
+    router.push("/signin");
+  }
+}, [])
 
   return (
-    <>{/* <Link href='/'>
-      <Button size='sm' color='gradient' icon={<KeyboardBackspaceIcon/>} className='ml-2 mb-2 pdBack'>Back</Button>
-      </Link>   
- */}
+    <>
     <div className="pdPage">
    
       <div className="p_left" > 

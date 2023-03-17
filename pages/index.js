@@ -15,6 +15,9 @@ const [loading,setLoading]=useState(false)
 const {data:session}=useSession()
   useEffect(() => { 
    ! session&&setLoading(true);
+   if (!session) {
+    router.push("/signin");
+  }
     setTimeout(() => {
       setLoading(false)
       async function checkAuth() {

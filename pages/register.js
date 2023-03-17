@@ -6,16 +6,18 @@ import { useRouter } from "next/router";
 import { getSession } from "next-auth/react";
 import Link from 'next/link' 
 import { toast } from "react-hot-toast";
+import FetchLoader from "../components/FetchLoader";
 
 export default function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
 const [name,setName]=useState('')
+const [fetchload,setFetchload]=useState(false)
 const [message, setMessage] = useState("");
   async function handleSubmit(event) {
     event.preventDefault();
-
+setFetchload(true);
     const response = await fetch("/api/register", {
       method: "POST",
       headers: {
@@ -28,11 +30,11 @@ const [message, setMessage] = useState("");
 
     if (response.ok) {
    toast.success('Successfully registerd your account please sign In to continue!')
-   
+   setFetchload(false)
    router.push('signin')
     } else {
       setMessage(data.message);
- 
+      setFetchload(false)
 
     }
   
@@ -42,6 +44,7 @@ const [message, setMessage] = useState("");
   return (
  
     <div className="relative flex flex-col justify-center min-h-[80vh]  overflow-hidden auth-forms">
+    {  fetchload&&<FetchLoader/>}
 
     <div className="w-full p-6 m-auto bg-[#0e1929] rounded-md shadow-xl shadow-rose-600/40 ring ring-2 ring-purple-600 lg:max-w-xl forms">
         <h1 className="text-3xl font-semibold text-center text-purple-700 underline uppercase decoration-wavy" style={{fontFamily:'days one'}}>

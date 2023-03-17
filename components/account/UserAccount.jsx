@@ -1,12 +1,12 @@
-import React,{useEffect} from 'react'
+import React,{useEffect,useState} from 'react'
   import Link from 'next/link'
 
 
-import { useSession, signIn, signOut } from 'next-auth/react'
-import { User, Tooltip  } from '@nextui-org/react'
-import Avatar from '@mui/material/Avatar';
+import { useSession,signOut } from 'next-auth/react'
+import { Avatar,Button } from '@nextui-org/react'
+
 import { useStateManager } from '../../state manager/Context'
-import { parseCookies } from 'nookies'
+
 
 function UserAccount() {
 
@@ -34,13 +34,21 @@ function UserAccount() {
 export default UserAccount
 
 export const Profile = () => {
+  const [isHovering, setIsHovering] = useState(false);
+
+  const handleMouseOver = () => {
+    setIsHovering(true);
+  };
+
+  const handleMouseOut = () => {
+    setIsHovering(false);
+  };
 const{setRole}=useStateManager()
   const { data: session } = useSession()
 
 const email=session.user.email
+
 useEffect(() => {
-
-
     fetch('/api/user', {
       method: 'POST',
       headers: {
@@ -63,36 +71,10 @@ useEffect(() => {
 },[])
 
   return (
-    <Tooltip text="Sign out">
-  <Avatar     onClick={() => signOut()}  sx={{ background:'green'}} {...stringAvatar(session.user.name)} />
-    </Tooltip>
+    <div className='usericon '  onMouseOver={handleMouseOver}
+    onMouseOut={handleMouseOut}>
+ <Avatar text={session.user.name.toLocaleUpperCase()} size="md" color='warning' squared />
+ {isHovering&&<div className='signout absolute right-5 '><Button css={{padding:'10px',marginTop:'2vh'}} size='auto' color='error' onClick={signOut()}>Sign Out!</Button></div>}
+    </div>
   )
-}
-function stringToColor(string) {
-  let hash = 0;
-  let i;
-
-  /* eslint-disable no-bitwise */
-  for (i = 0; i < string.length; i += 1) {
-    hash = string.charCodeAt(i) + ((hash << 5) - hash);
-  }
-
-  let color = '#';
-
-  for (i = 0; i < 3; i += 1) {
-    const value = (hash >> (i * 8)) & 0xff;
-    color += `00${value.toString(16)}`.slice(-2);
-  }
-  /* eslint-enable no-bitwise */
-
-  return color;
-}
-
-function stringAvatar(name) {
-  return {
-    sx: {
-      bgcolor: stringToColor(name),
-    },
-    children: `${name.split(' ')[0][0]}${name?.split(' ')?.[1]?.[0]}${name.split(' ')?.[2]?.[0]}`,
-  };
 }
