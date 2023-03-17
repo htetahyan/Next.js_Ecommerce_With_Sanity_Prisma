@@ -72,9 +72,11 @@ useEffect(() => {
 
   return (
     <div className='usericon '  onMouseOver={handleMouseOver}
-    onMouseOut={handleMouseOut}>
+    onMouseOut={handleMouseOut}
+    onClick={signOut()}
+    >
  <Avatar text={session.user.name.toLocaleUpperCase()} size="md" color='warning' squared />
- {isHovering&&<div className='signout absolute right-5 '><Button css={{padding:'10px',marginTop:'2vh'}} size='auto' color='error' onClick={signOut()}>Sign Out!</Button></div>}
+ {isHovering&&<div className='signout absolute right-5 '><Button css={{padding:'10px',marginTop:'2vh'}} size='auto' color='error' >Sign Out!</Button></div>}
     </div>
   )
 }
