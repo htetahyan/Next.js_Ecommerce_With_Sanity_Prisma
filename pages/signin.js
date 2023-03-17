@@ -2,12 +2,11 @@
 /* eslint-disable react/no-unknown-property */
 import Link from "next/link";
 import React, { useState } from "react";
+import Loading from "react-loading";
 import { useRouter } from "next/router";
 import { signIn ,useSession} from "next-auth/react";
 import { toast } from "react-hot-toast";
-import { useStateManager } from "../state manager/Context";
-import { Button, Grid, Loading } from "@nextui-org/react";
-import {getSession} from 'next-auth/react'
+
 import FetchLoader from "../components/FetchLoader";
 function Signin() {
   
@@ -19,11 +18,12 @@ function Signin() {
   const [fetchload,setFetchload]=useState(false)
   if (session) {
     router.push("/");
-    return null;
   }
 
     const Handler = async (e) => {
+      
         event.preventDefault();
+        if(email.length&&password.length>0){
 setFetchload(true)
         const result= await signIn("credentials", {
           redirect: false,
@@ -41,9 +41,11 @@ setFetchload(true)
            toast.success('welcome')
 setTimeout(() => {
     router.push('/')
-}, 3000);
+}, 2000);
       
 
+        }}else{
+            toast.error('Please do not leave blanks!')
         }
     };
   return (
@@ -94,7 +96,7 @@ setTimeout(() => {
                 <button
                 type="submit"
                 className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-purple-700 rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600">
-                {    load? <Loading type="points" color="currentColor" size="sm" />: 'Sign in'}
+                Sign in
                 </button>
             </div>
         </form>
