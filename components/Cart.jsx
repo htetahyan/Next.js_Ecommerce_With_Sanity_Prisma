@@ -86,7 +86,7 @@ stripe.redirectToCheckout({ sessionId: data.id });
         </Modal.Header>
         <Modal.Body>
          
-        {items.map(item=> (
+        {items>0&&items.map(item=> (
           <Grid key={item._id}  className='cartBody' css={{
           display:'flex' ,alignItems:'center',display:'flex',color:'#0a1929' ,background:'$accents2',padding:'10px',
           height:'15%',justifyContent:'space-around',
