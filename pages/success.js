@@ -12,7 +12,7 @@ useEffect(()=> {
 localStorage.clear();
 setTotalPrice(0);
 setTotalQty(0);
-setitems(0)
+
 },[])
   return (
     <div className='w-screen h-screen grid'>

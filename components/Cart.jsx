@@ -86,7 +86,7 @@ stripe.redirectToCheckout({ sessionId: data.id });
         </Modal.Header>
         <Modal.Body>
          
-        {items>0&&items.map(item=> (
+        {items?.map(item=> (
           <Grid key={item._id}  className='cartBody' css={{
           display:'flex' ,alignItems:'center',display:'flex',color:'#0a1929' ,background:'$accents2',padding:'10px',
           height:'15%',justifyContent:'space-around',
@@ -130,7 +130,7 @@ stripe.redirectToCheckout({ sessionId: data.id });
           </Grid>
         ))}
         <div className="payment">
-          {items.length>0 ? <div style={{background:'#f6f6f6',textAlign:'center'}}><Text css={{letterSpacing:'1.5px'}} h2 >Total :{(totalprice).toFixed(2)}</Text></div>:<Text h3 css={{color:'white'}} >Your cart is empty at this moment!</Text>}
+          {items.length>0 ? <div style={{background:'#f6f6f6',textAlign:'center'}}><Text css={{letterSpacing:'1.5px'}} h2 >Total :{(totalprice).toFixed(2)}$</Text></div>:<Text h3 css={{color:'white'}} >Your cart is empty at this moment!</Text>}
 
         </div>
         </Modal.Body>
