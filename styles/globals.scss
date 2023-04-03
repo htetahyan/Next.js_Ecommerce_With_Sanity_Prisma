@@ -40,9 +40,7 @@
     transform: scale(1.1);
   }
 }
-* {
-  color: #202636;
-}
+
 html,
 body {
   width: 100vw;
@@ -78,6 +76,18 @@ a {
   }
 }
  */
+//cursor
+.cursor{
+  background-color: #111;
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+
 //load on api req
 
 .Fetchloader{
@@ -396,6 +406,7 @@ justify-self: center;
 
 @media (orientation: portrait) {
   .Fetchloader{
+
     z-index: 100;
     box-shadow: inset 10000px 10px 10px rgba(0, 0, 0, 0.333);
    

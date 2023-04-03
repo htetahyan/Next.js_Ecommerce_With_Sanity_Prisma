@@ -30,7 +30,7 @@ const {data:session}=useSession()
 
   return (
    <> {loading?<Loader/>:<div>
-  
+
       <Main products={products} banners={banners}>
       
       </Main>

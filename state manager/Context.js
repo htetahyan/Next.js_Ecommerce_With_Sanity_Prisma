@@ -14,13 +14,25 @@ export const StateManager = ({ children }) => {
   const refresh=()=> {
 router.replace(router.push)
   }
+  const { pathname } = useRouter();
+
+
   const [items, setitems] = useState([]);
   const [showCartNoti, setShowCartNoti] = useState(false);
   const [qty, setQty] = useState(0);
   const [totalQty, setTotalQty] = useState(0);
   const [totalprice, setTotalPrice] = useState(0);
   const [role,setRole]=useState()
-  
+  const [showBtn,setShowBtn]=useState(false)
+  const [cursorVariant,setCursorVariant]=useState("default")
+useEffect(() => {
+if(pathname==='/product/[slug]'){
+  setShowBtn(true)
+}
+if(pathname==='/'||pathname==='/signin'||pathname==='register'){
+  setShowBtn(false)
+}
+}, [pathname])
 
     const addToCart = (product, quantity) => {
     
@@ -87,7 +99,7 @@ const minQty = () => (qty === 0 ? setQty(qty) : setQty(qty - 1));
 
 return (
   <Context.Provider
-    value={{setitems,setTotalPrice,setTotalQty, items, showCartNoti, qty, totalQty, addQty, minQty, addToCart,setShowCartNoti ,qtyContriol,Removeitem,totalprice,role,setRole}}
+    value={{cursorVariant,setCursorVariant,setitems,setTotalPrice,setTotalQty, items, showCartNoti, qty, totalQty, addQty, minQty, addToCart,setShowCartNoti ,qtyContriol,Removeitem,totalprice,role,setRole,showBtn,setShowBtn}}
   >
     {children}
   </Context.Provider>

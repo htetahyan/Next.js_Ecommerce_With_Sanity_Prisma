@@ -12,6 +12,7 @@ import Footer from "./Footer";
 
 import { Text} from "@nextui-org/react";
 import Handler from "./Category/Handler";
+import { useStateManager } from "../state manager/Context";
 
 const Main = ({ products, banners }) => {
 
@@ -19,7 +20,7 @@ const Main = ({ products, banners }) => {
   const categoryList = [...new Set(categoryArr)].sort();
   const [listItems, setlistItems] = useState(["all", ...categoryList]);
 
-
+  const {cursorVariant,setCursorVariant}=useStateManager()
   const [i, setIndex] = useState(0);
   const length = banners.length - 1;
   const next = () => {
@@ -28,7 +29,8 @@ const Main = ({ products, banners }) => {
   const prev = () => {
     setIndex(i == 0 ? length : i - 1);
   };
-
+const txtActive=()=>setCursorVariant("text")
+const txtOff=()=> setCursorVariant("default")
   const [cate, setCate] = useState("all");
   return (
     <>
@@ -67,7 +69,7 @@ const Main = ({ products, banners }) => {
             <div className="hl_next" onClick={next}></div>
           </div>
 
-          <Text
+          <Text onMouseEnter={txtActive} onMouseLeave={txtOff}
             h1
             css={{
               textAlign: "center",

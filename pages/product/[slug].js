@@ -25,9 +25,10 @@ function ProductPage({ product, products }) {
 const {addQty,minQty,qty,addToCart,role }=useStateManager()
 console.log(role);
 useEffect(() => {
-  if (!session) {
+
+/*   if (!session) {
     router.push("/signin");
-  }
+  } */
 }, [])
 
   return (
