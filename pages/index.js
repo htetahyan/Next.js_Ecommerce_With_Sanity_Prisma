@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Header from "../components/Header";
+
 import Main from "../components/Main";
 import { client } from "../lib/client";
 

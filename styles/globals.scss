@@ -602,8 +602,11 @@ background-color: #0a1929;
   .b_left {
     color: #0a1929;
     display: grid;
-    padding: 30px 10px;
+    padding: 30x 10px;
     justify-content: space-around;
+    h4{
+      height: 50%;
+    }
   }
   .b_right {
     padding: 10px;
